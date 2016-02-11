@@ -3,6 +3,9 @@ require 'json'
 require 'net/http'
 require 'uri'
 
+# usage:
+#   SLACK_API_KEY=<key> bundle exec ruby app.rb
+
 class BleepBloop < SlackRubyBot::Bot
   match /^bleep$/ do |client, data, match|
     client.say(text: match.inspect  , channel: data.channel)
