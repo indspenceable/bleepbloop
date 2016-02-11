@@ -8,7 +8,7 @@ require 'uri'
 
 class BleepBloop < SlackRubyBot::Bot
   match /^bleep$/ do |client, data, match|
-    client.say(text: match.inspect  , channel: data.channel)
+    client.say(text: "bloop", channel: data.channel)
   end
   command 'pugbomb' do |client, data, match|
     json = JSON.parse(Net::HTTP.get(URI('http://pugme.herokuapp.com/bomb?count=10')))
