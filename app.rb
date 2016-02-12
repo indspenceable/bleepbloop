@@ -11,6 +11,10 @@ class BleepBloop < SlackRubyBot::Bot
     client.say(text: "bloop", channel: data.channel)
   end
 
+  match /^bloop$/ do |client, data, match|
+    client.say(text: "bleep", channel: data.channel)
+  end
+
   command 'pugbomb' do |client, data, match|
     json = JSON.parse(Net::HTTP.get(URI('http://pugme.herokuapp.com/bomb?count=10')))
     json["pugs"].each do |pug|
