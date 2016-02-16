@@ -28,6 +28,12 @@ class BleepBloop < SlackRubyBot::Bot
     end
   end
 
+  command 'puppybomb' do |client, data, match|
+    10.times do
+        client.say(gif: 'puppy', channel: data.channel)
+    end
+  end
+
   IMAGES = {
     'aliensguy' => 'aliensguy.jpg',
     'braceyourself' => 'braceyourself.jpg',
