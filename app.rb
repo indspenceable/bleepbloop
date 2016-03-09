@@ -7,12 +7,12 @@ require 'uri'
 #   SLACK_API_KEY=<key> bundle exec ruby app.rb
 
 class BleepBloop < SlackRubyBot::Bot
-  match /^bleep$/ do |client, data, match|
-    client.say(text: "bloop", channel: data.channel)
+  match /^blee(?<extension>e*)p(?<punctuation>[?!]*)$/i do |client, data, match|
+    client.say(text: "bloo#{"o" * match[:extension].length}p#{"!" * match[:punctuation].length}", channel: data.channel)
   end
 
-  match /^bloop$/ do |client, data, match|
-    client.say(text: "bleep", channel: data.channel)
+  match /^bloo(?<extension>o*)p(?<punctuation>[?!]*)$/i do |client, data, match|
+    client.say(text: "blee#{"e" * match[:extension].length}p#{"!" * match[:punctuation].length}", channel: data.channel)
   end
 
   command 'pugbomb' do |client, data, match|
