@@ -15,6 +15,10 @@ class BleepBloop < SlackRubyBot::Bot
     client.say(text: "blee#{"e" * match[:extension].length}p#{"!" * match[:punctuation].length}", channel: data.channel)
   end
 
+  match /~~danny~~/ do |client, data, match|
+    client.say(text: "ᕕ( ᐛ )ᕗ what a great guy!", channel: data.channel)
+  end
+
   RESPONSES = [
     'As the prophecy foretold.',
     'But at what cost?',
