@@ -15,9 +15,29 @@ class BleepBloop < SlackRubyBot::Bot
     client.say(text: "blee#{"e" * match[:extension].length}p#{"!" * match[:punctuation].length}", channel: data.channel)
   end
 
+  RESPONSES = [
+    'As the prophecy foretold.',
+    'But at what cost?',
+    'So let it be written; so let it be done.',
+    'So... It has come to this.',
+    'That\'s just what they would have said',
+    'Is this why fate brought us together?',
+    'And thus, I die.',
+    '... just like in my dream...',
+    'Be that as it may, still may it be as it may be.',
+    'There is no escape from destiny.',
+    'Wise words by wise men write wise deeds in wise pen.',
+    'In _this_ economy?',
+    '... and then out come the wolves',
+  ]
+
   NAMES = /(bleep bloop|bleepy|bloopy)/
-  match /^(?<statement>.*), #{NAMES}/ do |client, data, match|
-    text = "#{match[:statement]} too, <@#{data.user}>!"
+  match /^(?<statement>.*), #{NAMES}(?<question>\??)/ do |client, data, match|
+    text = if match[:question] == '?'
+      RESPONSES.shuffle.pop
+    else
+      "#{match[:statement]} too, <@#{data.user}>!"
+    end
     client.say(text: text, channel: data.channel);
   end
 
