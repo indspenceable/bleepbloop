@@ -37,6 +37,7 @@ class BleepBloop < SlackRubyBot::Bot
     'Wise words by wise men write wise deeds in wise pen.',
     'In _this_ economy?',
     '... and then out come the wolves',
+    '42',
   ]
 
   NAMES = /(bleep bloop|bleepy|bloopy)/
